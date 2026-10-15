@@ -1,12 +1,13 @@
 <?php
 // db.php - Production Ready MySQL Connection
-$host     = 'localhost';
-$db_name  = 'vetora_db';
-$user     = 'root';
-$pass     = '';
-$charset  = 'utf8mb4';
+$host = getenv('DB_HOST') ?: 'localhost';
+$db_name = getenv('DB_NAME') ?: 'vetora_db';
+$user = getenv('DB_USER') ?: 'root';
+$pass = getenv('DB_PASS') !== false ? getenv('DB_PASS') : '';
+$charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db_name;charset=$charset";
+
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

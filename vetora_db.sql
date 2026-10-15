@@ -168,7 +168,7 @@ CREATE TABLE `users` (
 -- FIX: Passwords hashed with bcrypt (password_hash('admin123', PASSWORD_DEFAULT))
 -- Original plain-text password: admin123
 INSERT INTO `users` (`id`, `email`, `password`, `role`, `name`, `image_url`) VALUES
-(1, 'admin@kiyowo.id',  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin',  'Kiyowo Pet Admin', NULL),
+(1, 'admin@kiyowo.id',  '$2y$10$MlnWpFwvU17zXE64Z3uHkOVkIstDPnYfHKLV0yQVWzTcqDdNhxeVK', 'admin',  'Kiyowo Pet Admin', NULL),
 (2, 'doctor@kiyowo.id', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'doctor', 'Dr. Paws',         NULL);
 
 -- Foreign Key Constraints

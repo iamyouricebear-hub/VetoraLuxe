@@ -1,0 +1,32 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      DB_HOST: db
+      DB_NAME: vetora_db
+      DB_USER: vetora_user
+      DB_PASS: vetora_pass
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: localrootpass
+      MYSQL_DATABASE: vetora_db
+      MYSQL_USER: vetora_user
+      MYSQL_PASSWORD: vetora_pass
+    volumes:
+      - vetora_data:/var/lib/mysql
+      - ./vetora_db.sql:/docker-entrypoint-initdb.d/01-vetora_db.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-plocalrootpass"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  vetora_data:
